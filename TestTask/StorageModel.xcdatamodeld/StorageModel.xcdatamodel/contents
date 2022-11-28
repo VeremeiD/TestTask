@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G217" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="VectorEntity" representedClassName="VectorEntity" syncable="YES">
+        <attribute name="color_hex" attributeType="String"/>
+        <attribute name="end_point_x" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="end_point_y" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="identifier" attributeType="String"/>
+        <attribute name="length" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="start_point_x" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="start_point_y" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+</model>
