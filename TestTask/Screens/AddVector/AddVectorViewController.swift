@@ -21,7 +21,7 @@ final class AddVectorViewController: BaseViewController<AddVectorViewModel> {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Add new vector"
+        label.text = NSLocalizedString("addVector.title", comment: "")
         label.textAlignment = .center
         
         return label
@@ -29,7 +29,7 @@ final class AddVectorViewController: BaseViewController<AddVectorViewModel> {
     
     private let descriptionStartXLabel: UILabel = {
         let label = UILabel()
-        label.text = "Start point's X:"
+        label.text = NSLocalizedString("addVector.description.start.x", comment: "")
         label.textColor = .black
         label.textAlignment = .left
         
@@ -38,7 +38,7 @@ final class AddVectorViewController: BaseViewController<AddVectorViewModel> {
     
     private let descriptionStartYLabel: UILabel = {
         let label = UILabel()
-        label.text = "Start point's Y:"
+        label.text = NSLocalizedString("addVector.description.start.y", comment: "")
         label.textColor = .black
         label.textAlignment = .left
         
@@ -47,7 +47,7 @@ final class AddVectorViewController: BaseViewController<AddVectorViewModel> {
     
     private let descriptionEndXLabel: UILabel = {
         let label = UILabel()
-        label.text = "End point's X:"
+        label.text = NSLocalizedString("addVector.description.end.x", comment: "")
         label.textColor = .black
         label.textAlignment = .left
         
@@ -56,7 +56,7 @@ final class AddVectorViewController: BaseViewController<AddVectorViewModel> {
     
     private let descriptionEndYLabel: UILabel = {
         let label = UILabel()
-        label.text = "End point's Y:"
+        label.text = NSLocalizedString("addVector.description.end.y", comment: "")
         label.textColor = .black
         label.textAlignment = .left
         
@@ -65,7 +65,7 @@ final class AddVectorViewController: BaseViewController<AddVectorViewModel> {
     
     private let startXInput: UITextField = {
         let field = UITextField()
-        field.placeholder = "enter value"
+        field.placeholder = NSLocalizedString("addVector.placeholder", comment: "")
         field.borderStyle = .roundedRect
         field.keyboardType = .numberPad
         field.overrideUserInterfaceStyle = .light
@@ -75,7 +75,7 @@ final class AddVectorViewController: BaseViewController<AddVectorViewModel> {
     
     private let startYInput: UITextField = {
         let field = UITextField()
-        field.placeholder = "enter value"
+        field.placeholder = NSLocalizedString("addVector.placeholder", comment: "")
         field.borderStyle = .roundedRect
         field.keyboardType = .numberPad
         field.overrideUserInterfaceStyle = .light
@@ -85,7 +85,7 @@ final class AddVectorViewController: BaseViewController<AddVectorViewModel> {
     
     private let endXInput: UITextField = {
         let field = UITextField()
-        field.placeholder = "enter value"
+        field.placeholder = NSLocalizedString("addVector.placeholder", comment: "")
         field.borderStyle = .roundedRect
         field.keyboardType = .numberPad
         field.overrideUserInterfaceStyle = .light
@@ -95,7 +95,7 @@ final class AddVectorViewController: BaseViewController<AddVectorViewModel> {
     
     private let endYInput: UITextField = {
         let field = UITextField()
-        field.placeholder = "enter value"
+        field.placeholder = NSLocalizedString("addVector.placeholder", comment: "")
         field.borderStyle = .roundedRect
         field.keyboardType = .numberPad
         field.overrideUserInterfaceStyle = .light
@@ -105,7 +105,8 @@ final class AddVectorViewController: BaseViewController<AddVectorViewModel> {
     
     private let addButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Add", for: .normal)
+        let localizedTitle = NSLocalizedString("button.add", comment: "")
+        button.setTitle(localizedTitle, for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         
         return button
@@ -113,7 +114,8 @@ final class AddVectorViewController: BaseViewController<AddVectorViewModel> {
     
     private let closeButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Close", for: .normal)
+        let localizedTitle = NSLocalizedString("button.close", comment: "")
+        button.setTitle(localizedTitle, for: .normal)
         button.setTitleColor(.red, for: .normal)
         button.backgroundColor = .clear
         

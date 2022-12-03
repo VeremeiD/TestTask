@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32023A3C293BF6F500A31D9A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32023A3E293BF6F500A31D9A /* Localizable.strings */; };
+		32023A42293BFD1B00A31D9A /* CellTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32023A41293BFD1B00A31D9A /* CellTextFormatter.swift */; };
+		32023A44293BFD4200A31D9A /* CellFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32023A43293BFD4200A31D9A /* CellFormatterProtocol.swift */; };
 		3212FC1D292C26B300040573 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212FC1C292C26B300040573 /* Vector.swift */; };
 		3212FC21292C846C00040573 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212FC20292C846C00040573 /* CGPoint+Extensions.swift */; };
 		324336282934A18600E7B8E2 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324336272934A18600E7B8E2 /* UIViewController+Extensions.swift */; };
@@ -56,6 +59,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32023A3D293BF6F500A31D9A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		32023A41293BFD1B00A31D9A /* CellTextFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTextFormatter.swift; sourceTree = "<group>"; };
+		32023A43293BFD4200A31D9A /* CellFormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellFormatterProtocol.swift; sourceTree = "<group>"; };
 		3212FC1C292C26B300040573 /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
 		3212FC20292C846C00040573 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 		324336272934A18600E7B8E2 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -117,6 +123,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32023A40293BFD0500A31D9A /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				32023A41293BFD1B00A31D9A /* CellTextFormatter.swift */,
+				32023A43293BFD4200A31D9A /* CellFormatterProtocol.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		324336492934CD4D00E7B8E2 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +221,7 @@
 		32B67F2C2922F7F4002DEF8E /* TestTask */ = {
 			isa = PBXGroup;
 			children = (
+				32023A40293BFD0500A31D9A /* Tools */,
 				32B67F57292327C9002DEF8E /* Base */,
 				32B67F7129232EF1002DEF8E /* Coordinators */,
 				32B67F48292316E3002DEF8E /* Extensions */,
@@ -218,6 +234,7 @@
 				32B67F382922F7F6002DEF8E /* LaunchScreen.storyboard */,
 				32B67F3B2922F7F6002DEF8E /* Info.plist */,
 				32449D172933422C005B153E /* StorageModel.xcdatamodeld */,
+				32023A3E293BF6F500A31D9A /* Localizable.strings */,
 			);
 			path = TestTask;
 			sourceTree = "<group>";
@@ -387,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32B67F3A2922F7F6002DEF8E /* LaunchScreen.storyboard in Resources */,
+				32023A3C293BF6F500A31D9A /* Localizable.strings in Resources */,
 				32B67F372922F7F6002DEF8E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,6 +416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32023A44293BFD4200A31D9A /* CellFormatterProtocol.swift in Sources */,
 				32AED3B72933FB0B00B3EB41 /* VectorEntity+CoreDataClass.swift in Sources */,
 				32449D1529331A3B005B153E /* Dynamic.swift in Sources */,
 				32692DFC2931B74C0020425A /* VectorMoving.swift in Sources */,
@@ -409,6 +428,7 @@
 				32B67F7629234110002DEF8E /* MainScene.swift in Sources */,
 				32B67F4A292316F6002DEF8E /* UIColor+Extensions.swift in Sources */,
 				32692E032931C5CC0020425A /* VectorMovingModule.swift in Sources */,
+				32023A42293BFD1B00A31D9A /* CellTextFormatter.swift in Sources */,
 				32B67F7329232F03002DEF8E /* AppCoordinator.swift in Sources */,
 				32692DF72931AEAF0020425A /* VectorPointOption.swift in Sources */,
 				32B67F5E2923297C002DEF8E /* MainScreenViewController.swift in Sources */,
@@ -447,6 +467,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		32023A3E293BF6F500A31D9A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				32023A3D293BF6F500A31D9A /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		32B67F382922F7F6002DEF8E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
