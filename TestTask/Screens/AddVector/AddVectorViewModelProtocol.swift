@@ -8,7 +8,6 @@
 import Foundation
 
 protocol AddVectorViewModelProtocol: ViewModel {
-    func addVectorTapped(from: CGPoint, to: CGPoint)
+    func addVectorTapped(fromX: String?, fromY: String?, toX: String?, toY: String?)
     func closeTapped()
-    func inputError()
 }

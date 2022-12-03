@@ -17,29 +17,44 @@ final class AddVectorViewModel: AddVectorViewModelProtocol {
         self.coordinator = coordinator
     }
     
-    func addVectorTapped(from: CGPoint, to: CGPoint) {
+    func addVectorTapped(
+        fromX: String?,
+        fromY: String?,
+        toX: String?,
+        toY: String?
+    ) {
+        guard let fromX = Double(fromX ?? ""),
+              let fromY = Double(fromY ?? ""),
+              let toX = Double(toX ?? ""),
+              let toY = Double(toY ?? "")
+        else {
+            coordinator?.showCheckInputAlert()
+            return
+        }
+        
+        let start = CGPoint(x: fromX, y: fromY)
+        let end = CGPoint(x: toX, y: toY)
+        
         let vector = VectorModel(
             identifier: "Vector #\(canvasManager.freeVectorIndex)",
-            startPoint: from,
-            endPoint: to,
+            startPoint: start,
+            endPoint: end,
             vectorColor: UIColor.random,
-            length: from.distance(to: to)
+            length: start.distance(to: end)
         )
         
-        canvasManager.addNew(vector: vector) { [weak self] flag in
+        canvasManager.addNew(vector: vector) { [weak self] success in
             guard let self else { return }
-            self.coordinator?.openMainScreen()
             
-            guard !flag else { return }
-            self.coordinator?.showErrorAlert()
+            if success {
+                self.coordinator?.openMainScreen()
+            } else {
+                self.coordinator?.showErrorAlert()
+            }
         }
     }
     
     func closeTapped() {
         coordinator?.openMainScreen()
-    }
-    
-    func inputError() {
-        coordinator?.showCheckInputAlert()
     }
 }

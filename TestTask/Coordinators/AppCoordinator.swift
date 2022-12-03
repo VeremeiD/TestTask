@@ -44,7 +44,7 @@ final class AppCoordinator: AppCoordinatorProtocol {
             manager: CanvasManager.shared
         )
         let controller = AddVectorViewController(with: viewModel)
-        controller.modalPresentationStyle = .fullScreen
+        controller.modalPresentationStyle = .overCurrentContext
         
         DispatchQueue.main.async {
             self.rootController?.present(controller, animated: true)
