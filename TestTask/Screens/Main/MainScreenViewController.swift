@@ -14,7 +14,8 @@ final class MainScreenViewController: BaseViewController<MainScreenViewModel> {
     
     private let addVectorButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Add", for: .normal)
+        let localizedTitle = NSLocalizedString("button.add", comment: "")
+        button.setTitle(localizedTitle, for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.backgroundColor = UIColor.systemBlue
         button.layer.cornerRadius = 14.0
@@ -24,7 +25,8 @@ final class MainScreenViewController: BaseViewController<MainScreenViewModel> {
     
     private let vectorListButton: UIButton = {
         let button = UIButton()
-        button.setTitle("List", for: .normal)
+        let localizedTitle = NSLocalizedString("button.list", comment: "")
+        button.setTitle(localizedTitle, for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.backgroundColor = UIColor.systemBlue
         button.layer.cornerRadius = 14.0

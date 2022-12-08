@@ -9,27 +9,63 @@ import Foundation
 import UIKit
 
 final class AddVectorViewController: BaseViewController<AddVectorViewModel> {
-    private let descriptionStartLabel: UILabel = {
+    private let contentView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 14.0
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        return view
+    }()
+    
+    private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Start point"
-        label.textColor = .black
+        label.text = NSLocalizedString("addVector.title", comment: "")
         label.textAlignment = .center
         
         return label
     }()
     
-    private let descriptionEndLabel: UILabel = {
+    private let descriptionStartXLabel: UILabel = {
         let label = UILabel()
-        label.text = "End point"
+        label.text = NSLocalizedString("addVector.description.start.x", comment: "")
         label.textColor = .black
-        label.textAlignment = .center
+        label.textAlignment = .left
+        
+        return label
+    }()
+    
+    private let descriptionStartYLabel: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("addVector.description.start.y", comment: "")
+        label.textColor = .black
+        label.textAlignment = .left
+        
+        return label
+    }()
+    
+    private let descriptionEndXLabel: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("addVector.description.end.x", comment: "")
+        label.textColor = .black
+        label.textAlignment = .left
+        
+        return label
+    }()
+    
+    private let descriptionEndYLabel: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("addVector.description.end.y", comment: "")
+        label.textColor = .black
+        label.textAlignment = .left
         
         return label
     }()
     
     private let startXInput: UITextField = {
         let field = UITextField()
-        field.placeholder = "X"
+        field.placeholder = NSLocalizedString("addVector.placeholder", comment: "")
         field.borderStyle = .roundedRect
         field.keyboardType = .numberPad
         field.overrideUserInterfaceStyle = .light
@@ -39,7 +75,7 @@ final class AddVectorViewController: BaseViewController<AddVectorViewModel> {
     
     private let startYInput: UITextField = {
         let field = UITextField()
-        field.placeholder = "Y"
+        field.placeholder = NSLocalizedString("addVector.placeholder", comment: "")
         field.borderStyle = .roundedRect
         field.keyboardType = .numberPad
         field.overrideUserInterfaceStyle = .light
@@ -49,7 +85,7 @@ final class AddVectorViewController: BaseViewController<AddVectorViewModel> {
     
     private let endXInput: UITextField = {
         let field = UITextField()
-        field.placeholder = "X"
+        field.placeholder = NSLocalizedString("addVector.placeholder", comment: "")
         field.borderStyle = .roundedRect
         field.keyboardType = .numberPad
         field.overrideUserInterfaceStyle = .light
@@ -59,7 +95,7 @@ final class AddVectorViewController: BaseViewController<AddVectorViewModel> {
     
     private let endYInput: UITextField = {
         let field = UITextField()
-        field.placeholder = "Y"
+        field.placeholder = NSLocalizedString("addVector.placeholder", comment: "")
         field.borderStyle = .roundedRect
         field.keyboardType = .numberPad
         field.overrideUserInterfaceStyle = .light
@@ -69,82 +105,105 @@ final class AddVectorViewController: BaseViewController<AddVectorViewModel> {
     
     private let addButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Add", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 14.0
+        let localizedTitle = NSLocalizedString("button.add", comment: "")
+        button.setTitle(localizedTitle, for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
         
         return button
     }()
     
     private let closeButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Close", for: .normal)
+        let localizedTitle = NSLocalizedString("button.close", comment: "")
+        button.setTitle(localizedTitle, for: .normal)
         button.setTitleColor(.red, for: .normal)
         button.backgroundColor = .clear
-        button.layer.cornerRadius = 14.0
-        button.layer.borderWidth = 1.0
-        button.layer.borderColor = UIColor.red.cgColor
         
         return button
     }()
     
     override func setupSubviews() {
-        view.addSubview(descriptionStartLabel)
-        view.addSubview(startXInput)
-        view.addSubview(startYInput)
-        view.addSubview(descriptionEndLabel)
-        view.addSubview(endXInput)
-        view.addSubview(endYInput)
-        view.addSubview(addButton)
-        view.addSubview(closeButton)
+        view.backgroundColor = .clear
+        
+        view.addSubview(contentView)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(descriptionStartXLabel)
+        contentView.addSubview(startXInput)
+        contentView.addSubview(descriptionStartYLabel)
+        contentView.addSubview(startYInput)
+        contentView.addSubview(descriptionEndXLabel)
+        contentView.addSubview(endXInput)
+        contentView.addSubview(descriptionEndYLabel)
+        contentView.addSubview(endYInput)
+        contentView.addSubview(addButton)
+        contentView.addSubview(closeButton)
     }
     
     override func setupLayout() {
+        contentView.snp.makeConstraints { make in
+            make.bottom.left.right.equalToSuperview()
+            make.top.equalTo(startXInput.snp.top).inset(-50.0)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().inset(10.0)
+        }
+        
         closeButton.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(5.0)
-            make.left.right.equalToSuperview().inset(10.0)
+            make.centerY.equalTo(titleLabel)
+            make.left.equalToSuperview().inset(20.0)
             make.height.equalTo(44.0)
         }
         
         addButton.snp.makeConstraints { make in
-            make.bottom.equalTo(closeButton.snp.top).inset(-10.0)
-            make.left.right.equalToSuperview().inset(10.0)
+            make.centerY.equalTo(titleLabel)
+            make.right.equalToSuperview().inset(20.0)
             make.height.equalTo(44.0)
         }
         
-        descriptionStartLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(20.0)
-            make.left.right.equalToSuperview().inset(10.0)
+        endYInput.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(10.0)
+            make.right.equalToSuperview().inset(20.0)
+            make.left.equalTo(contentView.snp.centerX)
         }
         
-        startXInput.snp.makeConstraints { make in
-            make.top.equalTo(descriptionStartLabel.snp.bottom).inset(-10.0)
-            make.left.equalToSuperview().inset(10.0)
-            make.right.equalTo(view.snp.centerX)
-        }
-        
-        startYInput.snp.makeConstraints { make in
-            make.top.equalTo(descriptionStartLabel.snp.bottom).inset(-10.0)
-            make.right.equalToSuperview().inset(10.0)
-            make.left.equalTo(view.snp.centerX)
-        }
-        
-        descriptionEndLabel.snp.makeConstraints { make in
-            make.top.equalTo(startXInput.snp.bottom).inset(-20.0)
-            make.left.right.equalToSuperview().inset(10.0)
+        descriptionEndYLabel.snp.makeConstraints { make in
+            make.left.equalToSuperview().inset(20.0)
+            make.centerY.equalTo(endYInput)
         }
         
         endXInput.snp.makeConstraints { make in
-            make.left.equalToSuperview().inset(10.0)
-            make.right.equalTo(view.snp.centerX).inset(5.0)
-            make.top.equalTo(descriptionEndLabel.snp.bottom).inset(-10.0)
+            make.bottom.equalTo(endYInput.snp.top).inset(-10.0)
+            make.right.equalToSuperview().inset(20.0)
+            make.left.equalTo(contentView.snp.centerX)
         }
         
-        endYInput.snp.makeConstraints { make in
-            make.right.equalToSuperview().inset(10.0)
-            make.left.equalTo(view.snp.centerX).inset(5.0)
-            make.top.equalTo(descriptionEndLabel.snp.bottom).inset(-10.0)
+        descriptionEndXLabel.snp.makeConstraints { make in
+            make.left.equalToSuperview().inset(20.0)
+            make.centerY.equalTo(endXInput)
+        }
+        
+        startYInput.snp.makeConstraints { make in
+            make.bottom.equalTo(endXInput.snp.top).inset(-10.0)
+            make.right.equalToSuperview().inset(20.0)
+            make.left.equalTo(contentView.snp.centerX)
+        }
+        
+        descriptionStartYLabel.snp.makeConstraints { make in
+            make.left.equalToSuperview().inset(20.0)
+            make.centerY.equalTo(startYInput)
+        }
+        
+        startXInput.snp.makeConstraints { make in
+            make.bottom.equalTo(startYInput.snp.top).inset(-10.0)
+            make.right.equalToSuperview().inset(20.0)
+            make.left.equalTo(contentView.snp.centerX)
+        }
+        
+        descriptionStartXLabel.snp.makeConstraints { make in
+            make.left.equalToSuperview().inset(20.0)
+            make.centerY.equalTo(startXInput)
         }
     }
     
@@ -155,17 +214,12 @@ final class AddVectorViewController: BaseViewController<AddVectorViewModel> {
     }
     
     @objc func addTapped() {
-        if let startX = Double(startXInput.text ?? ""),
-           let startY = Double(startYInput.text ?? ""),
-           let endX = Double(endXInput.text ?? ""),
-           let endY = Double(endYInput.text ?? "") {
-            viewModel.addVectorTapped(
-                from: CGPoint(x: startX, y: startY),
-                to: CGPoint(x: endX, y: endY)
-            )
-        } else {
-            viewModel.inputError()
-        }
+        viewModel.addVectorTapped(
+            fromX: startXInput.text,
+            fromY: startYInput.text,
+            toX: endXInput.text,
+            toY: endYInput.text
+        )
     }
     
     @objc func closeTapped() {

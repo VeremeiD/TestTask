@@ -14,7 +14,7 @@ final class SideMenuViewController: BaseViewController<SideMenuViewModel> {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Vectors:"
+        label.text = NSLocalizedString("sideMenu.title", comment: "")
         label.font = .systemFont(ofSize: 24.0, weight: .bold)
         label.textAlignment = .center
         label.textColor = .black
@@ -42,7 +42,8 @@ final class SideMenuViewController: BaseViewController<SideMenuViewModel> {
     
     private let closeButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Close", for: .normal)
+        let localizedTitle = NSLocalizedString("button.close", comment: "")
+        button.setTitle(localizedTitle, for: .normal)
         button.setTitleColor(.red, for: .normal)
         button.layer.cornerRadius = 14.0
         button.backgroundColor = .clear
@@ -158,13 +159,14 @@ extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell")!
         var content = cell.defaultContentConfiguration()
         let model = models[indexPath.row]
-        
-        let startPoint = "From(\(Int(model.startPoint.x)), \(Int(model.startPoint.y)))"
-        let endPoint = "\nTo (\(Int(model.endPoint.x)), \(Int(model.endPoint.y)))"
-        let length = "\nLength: \(Int(model.length))"
+        let formatter = CellTextFormatter(
+            startPoint: model.startPoint,
+            endPoint: model.endPoint,
+            length: model.length
+        )
         
         content.text = model.identifier
-        content.secondaryText = "\(startPoint)\(endPoint)\(length)"
+        content.secondaryText = formatter.format()
         cell.contentConfiguration = content
         
         return cell

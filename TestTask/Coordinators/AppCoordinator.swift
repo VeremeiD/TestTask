@@ -44,7 +44,7 @@ final class AppCoordinator: AppCoordinatorProtocol {
             manager: CanvasManager.shared
         )
         let controller = AddVectorViewController(with: viewModel)
-        controller.modalPresentationStyle = .fullScreen
+        controller.modalPresentationStyle = .overCurrentContext
         
         DispatchQueue.main.async {
             self.rootController?.present(controller, animated: true)
@@ -54,13 +54,13 @@ final class AppCoordinator: AppCoordinatorProtocol {
     func showErrorAlert() {
         openMainScreen()
         let dialogMessage = UIAlertController(
-            title: "Error occurred",
-            message: "Please try again later",
+            title: NSLocalizedString("alert.error.title", comment: ""),
+            message: NSLocalizedString("alert.error.message", comment: ""),
             preferredStyle: .alert
         )
 
         let button = UIAlertAction(
-            title: "OK",
+            title: NSLocalizedString("alert.button.ok", comment: "").uppercased(),
             style: .default
         )
 
@@ -74,13 +74,13 @@ final class AppCoordinator: AppCoordinatorProtocol {
     func showCheckInputAlert() {
         openMainScreen()
         let dialogMessage = UIAlertController(
-            title: "Invalid input",
-            message: "Please check the entered data",
+            title: NSLocalizedString("alert.check_input.title", comment: ""),
+            message: NSLocalizedString("alert.check_input.message", comment: ""),
             preferredStyle: .alert
         )
 
         let button = UIAlertAction(
-            title: "OK",
+            title: NSLocalizedString("alert.button.ok", comment: "").uppercased(),
             style: .default
         )
 
