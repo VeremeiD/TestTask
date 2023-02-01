@@ -14,7 +14,10 @@ final class AppCoordinator: AppCoordinatorProtocol {
     init() { }
     
     func start() {
-        lazy var viewModel = MainScreenViewModel(coordinator: self)
+        lazy var viewModel = MainScreenViewModel(
+            coordinator: self,
+            manager: CanvasManager.shared
+        )
         let controller = MainScreenViewController(with: viewModel)
         self.rootController = controller
     }

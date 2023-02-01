@@ -21,6 +21,6 @@ struct CellTextFormatter: CellFormatterProtocol {
         let formattedTo = "(\(Int(endPoint.x)), \(Int(endPoint.y)))"
         let formattedLength = "\(Int(length))"
         
-        return "\(localizedFrom)\(formattedFrom)\n\(localizedTo)\(formattedTo)\n\(localizedLength) \(formattedLength)"
+        return "\(localizedFrom)\(formattedFrom) \(localizedTo)\(formattedTo) \(localizedLength) \(formattedLength)"
     }
 }

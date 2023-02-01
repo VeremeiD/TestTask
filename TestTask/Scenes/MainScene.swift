@@ -14,7 +14,7 @@ final class MainScene: SKScene {
     private let mechanics: CanvasMechanicsProtocol = CanvasMechanicsInitializer.createDefault()
 
     override func didMove(to view: SKView) {
-        backgroundColor = UIColor.lightGray
+        backgroundColor = .systemIndigo
         camera = cameraNode
         handleBindings()
         mechanics.handleDidMove()
